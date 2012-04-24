@@ -1,4 +1,4 @@
-<?
+<?php 
 /********************************************************************
  * Alexis ALGOUD													*
  * 08/11/2006 18:43:32												*
@@ -7,15 +7,15 @@
 
 /**
  * Inclusion des classes
- * Vérification du log de l'utilisateur
- * Affichage de l'en-tête de page et du menu administration
+ * Vï¿½rification du log de l'utilisateur
+ * Affichage de l'en-tï¿½te de page et du menu administration
  */
 	require("../includes/inc.php");
 	is_logged();
 	
 	if(!is_admin()) {
-		entete("Accès refusé");
-		erreur ("Vous n'êtes pas autorisé à afficher cette page");
+		entete("Accï¿½s refusï¿½");
+		erreur ("Vous n'ï¿½tes pas autorisï¿½ ï¿½ afficher cette page");
 		exit();
 	}
 	
@@ -36,7 +36,7 @@
 	$r->nombre_chambre($db);
 	$nb_chambre = $r->nb_resultat;
 	$r->nombre_categorie($db);
-	$nb_catégorie = $r->nb_resultat;
+	$nb_categorie = $r->nb_resultat;
 	$r->nombre_produit($db);
 	$nb_produit = $r->nb_resultat;
 	$r->nombre_client($db);
@@ -52,7 +52,7 @@
 	$t->Cell("Nombre de chambres $nb_chambre ");
 	$t->end_line();
 	$t->beg_line();
-	$t->Cell("Nombre de catégories $nb_catégorie ");
+	$t->Cell("Nombre de catÃ©gories $nb_catÃ©gorie ");
 	$t->end_line();
 	$t->beg_line();
 	$t->Cell("Nombre de produits $nb_produit ");
