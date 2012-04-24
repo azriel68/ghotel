@@ -3,6 +3,12 @@ atm-consulting-ghotel
 
 Logiciel des gestion hôtelière
 
+Instalation 
+=====================
+Les variables d'environnements sont à configurer dans /includes/define_vars.php
+La connection base de données est à définir dans /includes/db_mysql.conf
+
+
 Version actuelle v0.8
 =====================
 
