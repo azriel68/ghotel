@@ -52,7 +52,7 @@
 	$t->Cell("Nombre de chambres $nb_chambre ");
 	$t->end_line();
 	$t->beg_line();
-	$t->Cell("Nombre de catégories $nb_catégorie ");
+	$t->Cell("Nombre de catégories $nb_categorie ");
 	$t->end_line();
 	$t->beg_line();
 	$t->Cell("Nombre de produits $nb_produit ");
