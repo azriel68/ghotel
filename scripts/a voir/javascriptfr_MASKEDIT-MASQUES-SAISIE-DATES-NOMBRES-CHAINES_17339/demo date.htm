@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>MaskEdit en Javascript - Démo "date"</title>
+<script language="JavaScript1.2" src="masks.js"></script>
+<script language="JavaScript1.2">
+<!--//
+//Mask JavaScript API (v0.3) - dswitzer [chez] pengoworks [point] com - iubito [chez] asp-php [point] net
+function init()
+{
+	oDateMask = null;
+	oDateMask = new Mask(document.frmExample.format.value, "date");
+	oDateMask.attach(document.frmExample.date);
+	document.frmExample.date.value="";
+}
+</script>
+</head>
+<body onload="init();">
+<form name="frmExample" method="get">
+	<b>Choisir un format de masque :</b><br/>
+	<select size="5" onchange="document.frmExample.format.value=this.value;">
+		<option value="jj/mm/aaaa">Format français jj/mm/aaaa</option>
+		<option value="j/m/aa">j/m/aa</option>
+		<option value="j/m/aaaa">j/m/aaaa</option>
+		<option value="dd/mm/yy">dd/mm/yy</option>
+		<option value="dd/mm/yyyy">dd/mm/yyyy</option>
+		<option value="mm/dd/yyyy">mm/dd/yyyy</option>
+		<option value="yyyy-mm-dd">yyyy-mm-dd</option>
+		<option value="jj.mm.aaaa">jj.mm.aaaa</option>
+	</select> <input type="text" name="format" value="jj/mm/aaaa" />
+	<input type="submit" value="Appliquer!" onclick="init(); return false;" /><br />
+
+	<p><b>Application :</b><br />
+	<input type="text" name="date" value="12345" /></p>
+	<br/>Erreur :<br/><textarea rows="4" cols="50" name="erreur"></textarea>
+</form>
+</body>
+</html>

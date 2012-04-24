@@ -1,0 +1,252 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script language="JavaScript1.2" src="./masks.js"></script>
+
+	<script language="JavaScript1.2">
+	<!--//
+	var bShowTests = true;
+	var oResults = {
+		"browser": {
+			"userAgent": navigator.userAgent,
+			"appName": navigator.appName,
+			"appVersion": navigator.appVersion,
+			"appCodeName": navigator.appCodeName
+		},
+		"string": [],
+		"date": [],
+		"number": []
+	};
+	
+	function writeOutput(v){
+		document.write(v + "<br />");
+	}
+	
+	function updateResults(m, v, e){
+		if( m.value != e ){
+			var i = oResults[m.type].length;
+			oResults[m.type][i] = {
+				"supplied": v,
+				"value": m.value,
+				"expected": e,
+				"error": m.error.join("|"),
+				"mask": m.mask
+			};
+		}
+	}
+	
+	function postResults(){
+		if( oResults.string.length + oResults.date.length + oResults.number.length == 0 ) return alert("No errors to report!");
+		// form object
+		var oForm = document.frmReport;
+		// create serializer object
+		var oSerializer = new WddxSerializer();
+		// serialize WDDX packet
+		oForm.wddx.value = oSerializer.serialize(oResults);
+		oForm.submit();
+	}
+
+	function stringTest(v, m, e){
+		if( !bShowTests ) return false;
+		var oMask = new Mask(m);
+		
+		writeOutput("<b>mask:</b> "  + m);
+		writeOutput("<b>string:</b> " + v);
+		var n = oMask.format(v);
+		if( e != n ) document.write("<font color=red>");
+		writeOutput("<b>result:</b> " + n);
+		writeOutput("<b>expected:</b> " + e);
+		if( e != n ) document.write("</font>");
+		writeOutput("<b>error:</b> " + ((oMask.error.length == 0) ? "n/a" : oMask.error.join("<br>")));
+		writeOutput("");
+		updateResults(oMask, v, e);
+	}
+
+	function numberTest(v, m, e){
+		if( !bShowTests ) return false;
+		var oMask = new Mask(m, "number");
+
+		writeOutput("<b>mask:</b> "  + m);
+		writeOutput("<b>string:</b> " + v);
+		var n = oMask.format(v);
+		if( e != n ) document.write("<font color=red>");
+		writeOutput("<b>result:</b> " + n);
+		writeOutput("<b>expected:</b> " + e);
+		if( e != n ) document.write("</font>");
+		writeOutput("<b>error:</b> " + ((oMask.error.length == 0) ? "n/a" : oMask.error.join("<br>")));
+		writeOutput("");
+		updateResults(oMask, v, e);
+	}
+
+	function dateTest(v, m, e){
+		if( !bShowTests ) return false;
+		var oMask = new Mask(m, "date");
+
+		writeOutput("<b>mask:</b> "  + m);
+		writeOutput("<b>string:</b> " + v);
+		var n = oMask.format(v);
+		if( e != n ) document.write("<font color=red>");
+		writeOutput("<b>result:</b> " + n);
+		writeOutput("<b>expected:</b> " + e);
+		if( e != n ) document.write("</font>");
+		writeOutput("<b>error:</b> " + ((oMask.error.length == 0) ? "n/a" : oMask.error.join("<br>")));
+		writeOutput("");
+		updateResults(oMask, v, e);
+	}
+
+	function init(){
+		document.frmExample.reset();
+
+		oStringMask = new Mask("(###) ###-####");
+		oStringMask.attach(document.frmExample.string);
+
+		oDateMask = new Mask("dd/mm/yyyy", "date");
+		oDateMask.attach(document.frmExample.date);
+
+		oNumberMask = new Mask("$#,###.00", "number");
+		oNumberMask.attach(document.frmExample.number);
+	}
+	//-->
+	</script>
+</head>
+<body onload="init();">
+
+<h1>
+	Mask JavaScript API
+	(v<script>document.write(MaskAPI.version);</script>)
+</h1>
+
+<p>
+	This is the test script for the Mask JSAPI library. Please
+	use this page to test different mask formatting commands
+	and please report any errors to
+	<a href="mailto:dswitzer@pengoworks.com">dswitzer@pengoworks.com</a>.
+</p>
+
+<p>
+	The dynamic masking will not work in NS4 at the moment, as I haven't
+	gotten that far, but I believe it should work in most DHTML
+	compatible browsers. If you find any problems or make changes, please
+	let me know.
+<p>
+
+<p>
+	<script>
+	document.write("<a href=\"mask_js" + MaskAPI.version.replace(/[^0-9]/gi, "") + ".zip\">Download</a>");
+	</script>
+</p>
+
+<hr size="1">
+<h2>Masking Report</h2>
+
+<p>
+	On the great suggestion by Cameron Childress, I've set up this small form to allow
+	you to report your results to me. Don't feel required to supply your name or email,
+	I'm only asking in order to contact you back about the results. I'm not mining this
+	e-mail address or anything else--it's completely confidential.
+</p>
+
+<p>
+	To report the results of this test back to me, just click the "Report Results"
+	button and let your browser do the rest of the work. :)
+</p>
+
+<form action="http://www.pengoworks.com/workshop/js/mask/act_Report.cfm" method="post" name="frmReport" id="frmReport" target="_blank">
+	<input type="hidden" name="wddx" />
+	Name: <input type="text" name="name" size="20" /><br />
+	E-mail: <input type="text" name="email" size="20" /><br />
+	<br />
+	<input type="button" value="Report Results" onclick="postResults();" />
+</form>
+
+<hr size="1">
+
+<h2>Dynamic Field Masking</h2>
+
+<form name="frmExample" method="get" onsubmit="return false;">
+	<p>
+		<b>US Phone Number:</b><br />
+		<input type="text" name="string" value="" /><br />
+		Generic: (###) ###-####
+	</p>
+
+	<p>
+		<b>US Dollar:</b><br />
+		<input type="text" name="number" value="" /><br />
+		Number: $#,###.00
+	</p>
+
+	<p>
+		<b>FR Date:</b><br />
+		<input type="text" name="date" value="" /><br />
+		Date: dd/mm/yyyy
+	</p>
+</form>
+
+<script>
+writeOutput("<hr size=1><font size=+2><b>Generic Mask</b></font>")
+stringTest("namesdan", "****'*-***", "name's-dan");
+stringTest("614-777-6094", "(###) ###-####", "(614) 777-6094");
+stringTest("6147776094", "(###) ###-####", "(614) 777-6094");
+stringTest("614.777.6094", "(###) ###-####", "(614) 777-6094");
+stringTest("6147a76094", "(###) ###-####", "6147a76094");
+stringTest("6147a76094", "(###) #x*-####", "(614) 7a7-6094");
+stringTest("614-777-6094", "###.###.####", "614.777.6094");
+stringTest("614-777-6094", "###/###.####", "614/777.6094");
+stringTest("614-777-6094", "phone !#: ###/###.####", "phone !: 614/777.6094");
+
+writeOutput("<hr size=1><font size=+2><b>Date Mask</b></font>");
+dateTest("2/28/00", "m@/dd@/yyyy", "2@/28@/2000");
+dateTest("2/28/00", "m/dd/yyyy", "2/28/2000");
+dateTest("2/28/03", "m/dd/yyyy", "2/28/2003");
+dateTest("2/28/09", "m/dd/yyyy", "2/28/2009");
+dateTest("2/28/20", "m/dd/yyyy", "2/28/2020");
+dateTest("2/28/25", "m/dd/yyyy", "2/28/1925");
+dateTest("2/28/59", "m/dd/yyyy", "2/28/1959");
+dateTest("2/28/99", "m/dd/yyyy", "2/28/1999");
+dateTest("13/31/72", "m/d/yy", "13/31/72");
+dateTest("28/2/72", "d./m/..yy", "28./2/..72");
+dateTest("28.2.72", "d/m/yy", "28/2/72");
+dateTest("2/31/72", "m/d/yy", "2/31/72");
+dateTest("2/28/72", "m/d/yy", "2/28/72");
+dateTest("2/28/72", "mm/dd/yy", "02/28/72");
+dateTest("2/28/72", "m/dd/yyyy", "2/28/1972");
+dateTest("2/28/72", "mm/dd/yyyy", "02/28/1972");
+dateTest("72/2/28", "yyyy.mm.dd", "1972.02.28");
+dateTest("2/28/72", "yyyy.mm.dd", "2/28/72");
+dateTest("2/28/72", "mmmm dd,yyyy", "2 28,1972");
+
+writeOutput("<hr size=1><font size=+2><b>Numeric Mask</b></font>")
+numberTest("534", "0#####.##", "000534");
+numberTest("534", "0#####.00", "000534.00");
+numberTest("534.23", "0#####.##", "000534.23");
+numberTest("534.23", "000000.##", "000534.23");
+numberTest("534.23", "+##,###.##", "+534.23");
+numberTest("999,034,256.5252", "#,###.##", "999,034,256.53");
+numberTest("1,999,034,256.5252", "#,###.##", "1,999,034,256.53");
+numberTest("1,034,256.5252", "#,###.##", "1,034,256.53");
+numberTest("1,034,256.5242", "#,###", "1,034,256");
+numberTest("-534.23", "-(#,###.##)", "(-534.23)");
+numberTest("-534.23", "(-#,###.##)", "(-534.23)");
+numberTest("-534.23", "(#,###.##)", "(534.23)");
+numberTest("534.23", "(#,###.##)", "534.23");
+numberTest("534.23", "+#,###.##", "+534.23");
+numberTest("-534.23", "+#,###.##", "-534.23");
+numberTest("-534.23", "$#,###.##", "-$534.23");
+numberTest("53-4.23", "$#,###.##", "53-4.23");
+numberTest("--534.23", "$#,###.##", "--534.23");
+numberTest("dan", "", "dan");
+numberTest("6147776094", "", "6147776094");
+numberTest("1,034,256.5242", "#,###.#0", "1,034,256.52");
+numberTest("4,256.529", "#,###.##", "4,256.53");
+numberTest("4,256.529", "#,###.000000", "4,256.529000");
+numberTest("4,256.589", "#,###.0", "4,256.6");
+numberTest("4,256.5", "#,###.00", "4,256.50");
+numberTest("4,256.5", "#,###.#0", "4,256.50");
+numberTest("4,256.5", "$#,###.##", "$4,256.5");
+numberTest("4,256.5", "#,###.##", "4,256.5");
+</script>
+
+
+</body>
+</html>

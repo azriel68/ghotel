@@ -1,0 +1,29 @@
+#nouvelle_categorie {
+	background-color: #BAE7F5;
+	border:1px solid #91ABF2;
+	padding:5px;
+	margin:2px;
+	border-radius: 5px 5px; -moz-border-radius: 5px;
+}
+#nouvelle_categorie DIV.titre {
+	width:50px;
+	font-weight:bold;
+	color:#91ABF2;
+	font-size:11px;
+	float:left;
+}
+#nouvelle_categorie DIV.chp {
+	clear:right;
+	padding-bottom:2px;
+}
+#nouvelle_categorie input {
+	color: #000000; 
+	font-size: 11px;
+	font-family: Verdana;
+	font-weight: normal;
+	text-align:left;
+	text-decoration: none;
+	border: 1px #333333 solid;
+	background: #FFFFFF;
+	height:20px;
+}

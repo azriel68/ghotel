@@ -1,0 +1,42 @@
+TABLE.insee {
+	border:1px solid #666;
+	font-size:10px;
+	font-family:"Courier New", Courier, monospace;
+	width:100%;
+}
+
+TABLE.insee TR.titre {
+	font-size:14px;
+	text-align:center;
+	background-color:#999999;
+	font-weight:bold;
+}
+TABLE.insee TR.titre2 {
+	font-size:10px;
+	font-weight:bold;
+	text-align:center;
+	background-color:#CCCCCC;
+}
+
+TABLE.insee TD.cell {
+	width:50px;
+	border-right:1px dotted #888;
+	text-align:center;
+}
+TABLE.insee TR.titre2 TD.cell {
+	font-weight:bold;
+	text-align:center;
+	background-color:#C8A6F0;
+}
+TABLE.insee TD.occupe {
+	background-color:#CBF9AA;
+}
+TABLE.insee TD.libelle {
+	background:#BCBCBC;
+	font-weight:bold;
+	width:200px;
+	border-bottom:1px solid #888;
+}
+TABLE.insee TR.ligne TD.cell {
+	border-bottom:1px dotted #888;
+}

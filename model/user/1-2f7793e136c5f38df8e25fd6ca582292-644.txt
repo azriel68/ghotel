@@ -1,0 +1,11 @@
+[ENTETE,0,0,100]
+[CLIENT,100,40,100]
+[DATE,120,100,70,R]
+
+[TEXTE,0,110]
+FACTURE N° #numero_facture#
+[/TEXTE]
+
+[TABLEAU,0,150,lignes]
+
+[SIGNATURE,100,240,70,R]

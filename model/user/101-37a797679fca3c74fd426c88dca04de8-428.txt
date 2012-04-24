@@ -1,0 +1,25 @@
+[ENTETE,0,0,100]
+[CLIENT,100,40,100]
+[DATE,100,80,100]
+
+[TEXTE,0,100]
+Dear custumers,
+
+We are very pleased to welcome you for your holidays.
+
+We confirm your reservation from #datedujour# for the period #reservation_date_debut# till #reservation_date_fin#.
+Concerning :
+
+               #titre_categorie#
+                  
+                         
+
+You paid #reservation_acompte# Euro as prepayment.
+We shuold be glad receiving the balance of your holiday before june the 15th.
+
+Your accomodation will remain to you for 2 days.
+
+Best regards.
+[/TEXTE]
+
+[SIGNATURE,100,240,70,R]

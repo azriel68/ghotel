@@ -1,0 +1,30 @@
+[ENTETE,0,0,100]
+[CLIENT,100,40,100]
+[DATE,100,80,100]
+
+[TEXTE,0,100]
+Chers clientes, chers clients,
+
+Nous aurons le plaisir de vous compter très bientôt parmi nous pour vos vacances.
+
+Nous accusons réception par la présente de votre réservation le #datedujour# pour la période de #reservation_date_debut# jusqu'au #reservation_date_fin#.
+Concernant:
+
+               #titre_categorie#
+                  
+                         
+
+Vous nous avez versé la somme de #reservation_acompte# Euro comme accompte.
+Nous vous remercions de régler le solde de votre location 1 mois avant votre arrivée.
+
+Votre location sera réservée à votre usage exclusif pour la période réservée.
+
+Vous trouverez ci-joint, le devis de votre séjour ainsi que l'inventaire correspondant à votre location.
+
+Nous vous accueillons à partir de 14h et ce jusqu'à 20h pour la remise des clés, des draps et des formalités d'accueil. Un dépôt de garantie de 150 euros vous sera demandé à cet instant.
+Nous vous remercions de nous avertir en cas d'éventuel retard.
+
+Dans l'attente de vous retrouver pour vos prochaines vacances, recevez Madame, Monsieur, l'assurance de toute notre considération.
+[/TEXTE]
+
+[SIGNATURE,100,240,70,R]

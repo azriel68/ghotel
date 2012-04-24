@@ -1,0 +1,30 @@
+[ENTETE,0,0,100]
+[CLIENT,100,40,100]
+[DATE,100,80,100]
+
+[TEXTE,0,100]
+Dear custumers,
+
+We are very pleased to welcome you for your holidays.
+
+We confirm your reservation from #datedujour# for the period #reservation_date_debut# till #reservation_date_fin#.
+Concerning :
+
+               #titre_categorie#
+                  
+                         
+
+You paid #reservation_acompte# Euro as prepayment.
+We should be glad receiving the balance of your holiday, 1 month before your arrival.
+
+Your accomodation will remain to you for your exclusive custom and that for the booked period.
+
+In attachment, you will find the total price  for your stay and the inventory of your accomodation.
+
+We'll welcome you from 2 p.m. to 8 p.m. to give you the keys, blankets and to fill in the arrival formalities. A deposit of 150 euros will be asked on your arrival.
+Thanks to call us a if you should arrive later.
+
+Best regards.
+[/TEXTE]
+
+[SIGNATURE,100,240,70,R]

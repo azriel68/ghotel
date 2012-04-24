@@ -1,0 +1,26 @@
+[ENTETE,0,0,100]
+[CLIENT,100,30,100]
+[DATE,20,65,170,R]
+
+[TEXTE,0,100]
+Mevrouw, Meneer,
+
+Wij hebben het genoegen U binnenkort bij ons te mogen ontvangen voor Uw komende vakantie.
+
+Wij hebben Uw reserveringsaanvraag goed ontvangen en bevestigen op  #datedujour# ons akkoord voor de periode van #reservation_date_debut# tot #reservation_date_fin#.
+Betreffend :
+
+               #titre_categorie#
+               	   
+
+
+U hebt ons een voorschot van #reservation_acompte# Euro betaald.
+Hierbij zijn ook de reserveringskosten van #frais_de_reservation# Euro vereffend.
+Uw locatie is voor U persoonlijk gereserveerd, vanaf de aankomstdatum en zal zonder bericht van U, voor 2 dagen vrijgehouden worden.
+
+Wij vragen u om het saldo van uw verhuur te laatste 4 weken voor aankomst te voldoen, zoals voorzien in de reserveringsvoorwaarden.
+
+In afwachting U persoonlijk op de camping te mogen ontmoeten, heten wij U reeds bij voorbaat hartelijk welkom en sturen U onze vriendelijke groeten.
+[/TEXTE]
+
+[SIGNATURE,100,240,70,R]

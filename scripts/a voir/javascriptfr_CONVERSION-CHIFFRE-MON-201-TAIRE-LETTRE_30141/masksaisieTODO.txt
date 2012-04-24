@@ -1,0 +1,37 @@
+    * CE QU'IL FAUT FAIRE :
+    *
+    * - Voir mon tuto ici : http://www.asp-php.net/scripts/scripting/maskedit.php (avec exemples testable en live ;-) )
+    * - télécharger le zip
+    *
+    * Ensuite, dans le code :
+    * 1. dans la section <head></head>
+    * <script language="JavaScript1.2" src="masks.js"></script>
+    *
+    * 2. Si ton formulaire contient 2 dates (que tu veux en jj/mm/aaaa) et un prix en euro
+    * <form name="monform" action=....>
+    * <input type="text" name="datedebut"/>
+    * <input type="text" name="datefin"/>
+    * <input type="text" name="montant"/>
+    * ...
+    * </form>
+    *
+    * 3. La fonction qui initialise les masks et les "attache" aux champ
+    * dans le <head></head>
+    * <script language="JavaScript1.2">
+    * // Mask JavaScript API (v0.3) - dswitzer -AT- pengoworks -POINT- com - iubito -AT- asp-php -POINT- net
+    * function init()
+    * {
+    * // Création du masque date jj/mm/aaaa
+    * oDateMask = new Mask("jj/mm/aaaa", "date");
+    * // Création du masque montant en euro
+    * oEuroMask = new Mask("?#_###.00", "number");
+    * // Associer le oDateMask aux 2 champs
+    * oDateMask.attach(document.monform.datedebut);
+    * oDateMask.attach(document.monform.datefin);
+    * // Associer le oEuroMask au champ
+    * oEuroMask.attach(document.monform.montant);
+    * }
+    * </script>
+    *
+    * 4. <body onload="init();">
+

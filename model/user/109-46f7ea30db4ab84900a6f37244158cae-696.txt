@@ -1,0 +1,12 @@
+[ENTETE,0,0,100]
+[CLIENT,100,40,100]
+[DATE,100,80,70,R]
+
+[TEXTE,0,80]
+#ref_doc#
+[/TEXTE]
+
+[TABLEAU,0,90,lignes]
+
+[SIGNATURE,100,220,70,R]
+

@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>MaskEdit en Javascript - Démo "string"</title>
+<script language="JavaScript1.2" src="masks.js"></script>
+<script language="JavaScript1.2">
+<!--//
+//Mask JavaScript API (v0.3) - dswitzer [chez] pengoworks [point] com - iubito [chez] asp-php [point] net
+function init()
+{
+//Pour les erreurs
+	document.frmExample.erreur.value="";
+
+	oStringMask = null;
+	oStringMask = new Mask(document.frmExample.format.value, "string");
+	oStringMask.attach(document.frmExample.chaine);
+	// Reformatage
+	if (document.frmExample.chaine.value != '')
+	   document.frmExample.chaine.value = oStringMask.format(document.frmExample.chaine.value); 
+}
+//-->
+</script>
+</head>
+<body onload="init();">
+<form name="frmExample" method="get">
+	<b>Choisir un format de masque :</b><br/>
+	<select size="5" onchange="document.frmExample.format.value=this.value;">
+		<option value="###">3 chiffres</option>
+		<option value="xxx">3 lettres</option>
+		<option value="***">3 chiffres ou lettres</option>
+		<option value="* * *">avec des espaces</option>
+		<option value="#### xx ##">Plaque d'immatriculation française</option>
+		<option value="##.##.##.##.##">Numéro de téléphone en France</option>
+		<option value="(###) ###-####">Numéro de téléphone aux USA</option>
+		<option value="tel : (+##) #.##.##.##.##">tel : (+33) 1.23.45.67</option>
+		<option value="# ## ## ## ### ### ##">Numéro de sécurité sociale</option>
+	</select> <input type="text" name="format" value="###" />
+	<input type="submit" value="Appliquer!" onclick="init(); return false;" /><br />
+
+	<br/><b>Application :</b><br />
+	<input type="text" name="chaine" value="" /><br />
+	<br/>Erreur :<br/><textarea rows="4" cols="50" name="erreur"></textarea>
+</form>
+</body>
+</html>

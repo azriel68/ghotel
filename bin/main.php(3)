@@ -1,0 +1,100 @@
+<?
+	require("../includes/inc.php");
+
+  if(isset($_REQUEST['action'])){
+		$action=$_REQUEST['action'];
+	}
+	else{
+		$action='VIEW';
+	}
+
+  if($action=='VIEW' && is_logged(true)){
+      header("location:hotel.php");
+  }
+
+
+
+	$db=new Tdb;
+//$db->db->debug=true;
+	switch($action){
+		case 'DECONNEXION':
+			menu_off();
+			entete("Identifiez-vous");
+			info("Vous êtes maintenant déconnecté");
+			deconnexion();
+			fiche();
+			break;
+		case 'LOGIN':
+			$_SESSION[SESS_USER]=new TUtilisateur;
+			$u=& $_SESSION[SESS_USER];
+			if($u->login($db,$_REQUEST['login'], $_REQUEST['password'])){
+				header("location:hotel.php");
+			}
+			else{
+				menu_off();
+				erreur("Login ou mot de passe incorrect");
+
+				entete("Identifiez-vous");
+				deconnexion();
+				fiche();
+			}
+
+			break;
+		case 'VIEW':
+			menu_off();
+			entete("Identifiez-vous");
+			fiche();
+			break;
+		default:
+			erreur("inconnu : ".$action);
+	} // switch
+
+	$db->close();
+	pied_de_page();
+
+
+function fiche(){
+
+
+
+	$formname="formlogin";
+	$form=new TForm($_SERVER['PHP_SELF'], $formname);
+	echo $form->hidden("action","LOGIN");
+?>
+<script language="javascript">
+function connexion(){
+ 	document.forms['<?=$formname?>'].elements['action'].value='LOGIN';
+ 	document.forms['<?=$formname?>'].submit();
+}
+
+</script>
+<?
+
+	$t=new TTbl;
+	
+	$t->beg_tbl('formcadre',-1,2,'','center');
+	$t->beg_line("listheader");
+	$t->Cell("Identifiez-vous",-1,'',2);
+	$t->end_line();
+	$t->beg_line();
+	$t->Cell("Votre identifiant ",-1,'','','right');
+	$t->Cell( $form->texte("","login",isset($_REQUEST['login'])?$_REQUEST['login']:"",30,255)
+.(isset($_REQUEST['login'])?"":"<script language=\"javascript\">document.forms['$formname'].elements['login'].focus();</script>") );
+	$t->end_line();
+	$t->beg_line();
+	$t->Cell("Votre mot de passe ");
+	$t->Cell( $form->password("","password","",30,255)
+.(isset($_REQUEST['login'])?"<script language=\"javascript\">document.forms['$formname'].elements['password'].focus();</script>":"") );
+	$t->end_line();
+	$t->end_tbl();
+
+	echo "<p align=\"center\">";
+	echo $t->link("Me connecter","javascript:connexion()","button");
+	echo "</p>";
+
+	echo $form->btsubmithidden('','btvalidation');
+
+	echo $form->end_form();
+
+}
+?>

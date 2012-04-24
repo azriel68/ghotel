@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>MaskEdit en Javascript - Démo "number"</title>
+<script language="JavaScript1.2" src="masks.js"></script>
+<script language="JavaScript1.2">
+<!--//
+//Mask JavaScript API (v0.3) - dswitzer [chez] pengoworks [point] com - iubito [chez] asp-php [point] net
+function init()
+{
+	oNumberMask = null;
+	oNumberMask = new Mask(document.frmExample.format.value, "number");
+	oNumberMask.attach(document.frmExample.nombre);
+	// Reformatage
+	if (document.frmExample.nombre.value != '')
+	   document.frmExample.nombre.value = oNumberMask.format(document.frmExample.nombre.value); 
+}
+//-->
+</script>
+</head>
+<body onload="init();">
+<form name="frmExample" method="get">
+	<b>Choisir un format de masque :</b><br/>
+	<select size="5" onchange="document.frmExample.format.value=this.value;">
+		<option value="#">nombre entier simple</option>
+		<option value="#.##">2 décimales non obligatoires</option>
+		<option value="#.000">3 décimales obligatoires</option>
+		<option value="0###">jusqu'à 4 zéros non significatifs</option>
+		<option value="(-#)">Entier négatif entre parenthèses (notation US ?)</option>
+		<option value="#_###">Entier avec espace pour séparer les milliers</option>
+		<option value="#_###.##">2 déc. non oblig. + espace sépar. milliers</option>
+		<option value="#_###.00">Comme au-dessus mais 2 déc. obligatoires</option>
+		<option value="€#_###.00">Montant euro</option>
+		<option value="$#,###.00">Montant dollar, notation anglaise</option>
+		<option value="$(-#,###.00)">Montant dollar, parenthèses si < 0</option>
+		<option value="¥#,###.00">Montant en yen (Japon)</option>
+		<option value="£#,###.00">Montant en pound (livre sterling)</option>
+		<option value="%#">Pourcentage entier</option>
+		<option value="%#.#">Pourcentage une décimale non obligatoire</option>
+		<option value="%#.00">Pourcentage, 2 déc. obligatoires</option>
+		<option value="%+#">Pourcentage positif entier</option>
+	</select> <input type="text" name="format" value="#" />
+	<input type="submit" value="Appliquer!" onclick="init(); return false;" /><br />
+
+	<br/><b>Application :</b><br />
+	<input type="text" name="nombre" value="12345" /><br />
+	<br/>Erreur :<br/><textarea rows="4" cols="50" name="erreur"></textarea>
+</form>
+</body>
+</html>

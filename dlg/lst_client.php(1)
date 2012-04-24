@@ -1,0 +1,48 @@
+<?
+
+require("../includes/inc.php");
+
+entete("Sélectionner le client");
+
+$t=new TTbl;
+$listname='dblist1';
+$lst=new TListView($listname);
+
+echo "<h1>Liste des clients</h1>";
+
+//$_REQUEST['DEBUG']=1;
+//requête
+$sql = "SELECT id as 'ID',civ as 'Civilité',CONCAT(CONCAT(prenom,' '),nom) as 'Nom'
+		,CONCAT(CONCAT(civ,' '),CONCAT(CONCAT(prenom,' '),nom)) as 'CivNom'
+		,adresse as 'Adresse'
+		,dt_cre as 'Création'
+		FROM hot_client
+		WHERE id_hotel=".get_sess_hotel_id();
+$ordercolumn = isset($_REQUEST["orderColumn"])?$_REQUEST["orderColumn"]: 'Création';
+$ordertype = isset($_REQUEST["orderTyp"])?$_REQUEST["orderTyp"]:"D";
+$pagenumber = isset($_REQUEST["pageNumber"])?$_REQUEST["pageNumber"]:0;
+
+$lst->Set_Query($sql);
+
+$lst->Load_query($ordercolumn,$ordertype); // on charge la requête
+$lst->Set_pagenumber($pagenumber);
+$lst->set_key('ID',$_REQUEST['p0']);
+$lst->set_key('CivNom',$_REQUEST['p1']);
+if (isset($_REQUEST['p2'])) {
+	$lst->set_key('Adresse',$_REQUEST['p2']);	
+}
+$lst->Set_hiddenColumn('CivNom',true);
+$lst->Set_hiddenColumn('Adresse',true);
+$lst->Str_trans('Adresse',array("\r"=>"\\r","\n"=>"\\n"));
+$lst->Set_columnType('Création','DATE');
+$lst->Set_nbLinesPerPage(35);
+
+if (!is_null($_REQUEST["FORM"]) && $_REQUEST["FORM"]>"")
+    $lst->Set_onClickAction("LinkForm","'".$_REQUEST["FORM"]."'"); //on définie la fonction javascript appelée lors du click sur une ligne de la liste
+
+
+echo $lst->Render();
+
+pied_de_page();
+
+?>
