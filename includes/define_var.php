@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Script de définition des constantes
+ * Script de dï¿½finition des constantes
  *
  * @version $Id$
  * @copyright 2006
@@ -11,8 +11,8 @@
 	define("SESS_HOTEL","hotel_session_active",true);
 	define("SESS_GRP","groupe_session_active",true);
 	
-	define("DIR_HTTP","http://ghotel.gestion-hotel.com/",true);
-	define("DIR_HTTP_SITE","http://www.gestion-hotel.com/",true);
+	define("DIR_HTTP","http://localhost/ghotel/",true);
+	define("DIR_HTTP_SITE","http://localhost/ghotel-site-presentation/",true);
 	
 	define("DIR_SCRIPTS",DIR_HTTP."scripts/",true);
 	
