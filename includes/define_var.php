@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Script de d�finition des constantes
+ * Script de définition des constantes
  *
  * @version $Id$
  * @copyright 2006
