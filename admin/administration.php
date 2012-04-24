@@ -7,15 +7,15 @@
 
 /**
  * Inclusion des classes
- * V�rification du log de l'utilisateur
- * Affichage de l'en-t�te de page et du menu administration
+ * Vérification du log de l'utilisateur
+ * Affichage de l'en-tete de page et du menu administration
  */
 	require("../includes/inc.php");
 	is_logged();
 	
 	if(!is_admin()) {
-		entete("Acc�s refus�");
-		erreur ("Vous n'�tes pas autoris� � afficher cette page");
+		entete("Accés refusé");
+		erreur ("Vous n'êtes pas autorisé à afficher cette page");
 		exit();
 	}
 	
