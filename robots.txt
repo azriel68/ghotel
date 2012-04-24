@@ -1,0 +1,3 @@
+Disallow: /includes/
+Disallow: /adodb/
+Disallow: /admin/
